@@ -103,17 +103,49 @@ MQTT is used for its lightweight publish/subscribe model, well suited to IoT and
 11. Trigger notification if an alert condition is met
 12. Repeat
 
-##Detailed Procedure
-1.Login to ThingSpeak Website and create  a channel.
-2.Name it and activate Field1 for Temperature value and Field2 for Humidity value.
-3.Note the Channel ID.
-4.Create an MQTT device(Broker) to which our clients connect to  by Device->,MQTT.
-5.Copy the Client ID,Username and Password given by it and select the desired channel to which it publishes the data.
-6.In our project's app.c edit the preprocessor directives accordingly as given by the broker.
-7.Edit the sl_net_default_values to connect the dev kit to the local access point.
-8.Build the project and ensure it is successful.
-9.In ThingSpeak ,go to apps and create two React apps ,one to monitor the threshold condition for temperature field and the other for monitoring the threshold condition for the humiidity field of the same channel.
-10.These two react apps must trigger two Thinghttp apps which individually performs HTTP GET requests to the respective Google App Script deployements to send the email alerts. So, we must mention the deployement URLs in each of the Thinghttp app and mention the HTTP method as GET.
+## Detailed Procedure
+
+### Step 1: Set up the ThingSpeak channel
+
+1. Log in to the [ThingSpeak](https://thingspeak.com) website and create a new channel.
+2. Name the channel and enable the fields:
+   - **Field 1**: Temperature
+   - **Field 2**: Humidity
+3. Save the channel and note the **Channel ID**.
+
+### Step 2: Create the MQTT device (broker credentials)
+
+1. Go to **Devices → MQTT** and create a new MQTT device.
+2. Copy the **Client ID**, **Username** and **Password** that ThingSpeak generates.
+3. Select the channel the device is allowed to publish to.
+
+### Step 3: Configure the firmware
+
+1. Open the project's `app.c` and update the preprocessor directives with the broker details from Step 2.
+2. Open `config/sl_net_default_values.h` and set your local access point's SSID and password so the dev kit can join the Wi-Fi network.
+3. Build the project and confirm it compiles successfully.
+
+### Step 4: Set up the alerts
+
+The alert pipeline is **React → ThingHTTP → Google Apps Script → Email**. Create one set of these for each monitored field.
+
+1. In ThingSpeak, go to **Apps → React** and create two React apps for the same channel:
+   - **React 1**: monitors the temperature field (Field 1) against its threshold.
+   - **React 2**: monitors the humidity field (Field 2) against its threshold.
+2. Go to **Apps → ThingHTTP** and create two ThingHTTP apps, one for each React app.
+3. In each ThingHTTP app:
+   - Paste the deployment URL of the matching Google Apps Script web app.
+   - Set the HTTP method to **GET**.
+4. In each React app, set the action to trigger its matching ThingHTTP app.
+
+### Summary
+
+| Step | Task | Where |
+|------|------|-------|
+| 1 | Create channel, enable Field 1 and Field 2, note Channel ID | ThingSpeak |
+| 2 | Create MQTT device, copy Client ID / Username / Password | ThingSpeak |
+| 3 | Update `app.c` and `sl_net_default_values.h`, then build | Simplicity Studio / VS Code |
+| 4 | Create 2 React apps and 2 ThingHTTP apps linked to Apps Script | ThingSpeak |
 
 
 
