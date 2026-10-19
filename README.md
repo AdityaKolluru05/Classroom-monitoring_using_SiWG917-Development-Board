@@ -1,17 +1,17 @@
 # Classroom Environmental Monitoring using SiWG917
 
-An IoT-based classroom monitoring system using the **Silicon Labs SiWG917** wireless SoC to measure environmental parameters such as **temperature, humidity, and noise level**, and publish the collected data to a cloud-based MQTT platform for remote monitoring.
+An IoT-based classroom monitoring system using the **Silicon Labs SiWG917** wireless SoC to measure environmental parameters such as **temperature, humidity, and noise level**,publish the collected sensor data to a cloud-based MQTT platform for remote monitoring and parameter(s)threshold condition defining and consequent  alert triggering.
 
 ## Overview
 
-The system periodically collects sensor data and publishes it through an **MQTT connection** to **ThingSpeak**, where it can be monitored remotely. An alert mechanism notifies the operator when predefined environmental conditions are detected.
+The system periodically collects sensor data and publishes it through an **MQTT connection** to **ThingSpeak**, where it can be monitored remotely. An Email alert mechanism notifies the operator when predefined environmental conditions are detected.
 
 **Parameters monitored:** Temperature · Humidity · Noise Level
 
 ## Objectives
 
 - Monitor classroom environmental conditions in real time
-- Collect sensor data using the SiWG917 dev kit's onboard sensors
+- Collect sensor data using the SiWG917 dev kit's onboard sensors.
 - Establish Wi-Fi connectivity via the SiWG917
 - Transmit sensor data using MQTT
 - Store and visualize data using ThingSpeak
@@ -71,9 +71,8 @@ MQTT is used for its lightweight publish/subscribe model, well suited to IoT and
 ## Hardware
 
 - Silicon Labs SiWG917 Development Kit
-- Onboard temperature sensor
-- Onboard humidity sensor
-- Onboard microphone / noise sensing hardware
+- Onboard temperature and humidity sensor(Si7021:digital relative humidity and temperature sensor)
+- Onboard microphone / noise sensing hardware.(ICS43434 I2S :Low-Noise Microphone)
 - USB connection for programming and serial monitoring
 
 ## Software and Tools
@@ -196,13 +195,15 @@ Connect the SiWG917 dev kit via USB and verify the serial/debug interface is det
 | Parameter | Value in the Project |
 |---|---|
 | **Client ID** | `ORUKEDwoNSQ5JxQMLB0UIgM` |
-| **Broker IP** | `18.207.44.162` |
+| **Broker IP** | `54.81.146.55` |
 | **Broker Port** | `1883` |
 | **Clean Session** | `1` (Enabled) |
 | **Last Will Topic** | `gitam/revanth/monitor/status` |
 | **Last Will Message** | `{"device":"SIWG917","status":"OFFLINE"}` |
 | **Published Topic** | `channels/3429057/publish` |
-| **Published Message** | `field1=45&field2=60&field3=35` |
+| **Published Message** | ` "field1=%ld&field2=%lu",
+                                  (long)temperature,
+                                  (unsigned long)humidity` |
 | **Publish QoS** | `0` |
 | **Last Will QoS** | `1` |
 | **Last Will Retained** | `1` |
