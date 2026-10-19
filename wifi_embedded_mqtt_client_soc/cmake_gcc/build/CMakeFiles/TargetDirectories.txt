@@ -1,4 +1,0 @@
-C:/Users/Admin/SimplicityStudio/v6_workspace/wifi_embedded_mqtt_client_soc/cmake_gcc/build/CMakeFiles/slc.dir
-C:/Users/Admin/SimplicityStudio/v6_workspace/wifi_embedded_mqtt_client_soc/cmake_gcc/build/CMakeFiles/wifi_embedded_mqtt_client_soc.dir
-C:/Users/Admin/SimplicityStudio/v6_workspace/wifi_embedded_mqtt_client_soc/cmake_gcc/build/CMakeFiles/edit_cache.dir
-C:/Users/Admin/SimplicityStudio/v6_workspace/wifi_embedded_mqtt_client_soc/cmake_gcc/build/CMakeFiles/rebuild_cache.dir
