@@ -97,8 +97,8 @@ MQTT is used for its lightweight publish/subscribe model, well suited to IoT and
 5. Establish MQTT connection with the cloud broker
 6. Read temperature, humidity, and noise measurements
 7. Process sensor values
-8. Publish sensor data via MQTT
-9. Visualize data on ThingSpeak
+8. Publish sensor data via MQTT to a ThingSpeak Channel
+9. Visualize data on ThingSpeak Channel
 10. Check values against alert conditions
 11. Trigger notification if an alert condition is met
 12. Repeat
