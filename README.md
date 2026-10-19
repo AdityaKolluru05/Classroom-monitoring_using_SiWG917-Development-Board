@@ -103,6 +103,21 @@ MQTT is used for its lightweight publish/subscribe model, well suited to IoT and
 11. Trigger notification if an alert condition is met
 12. Repeat
 
+##Detailed Procedure
+1.Login to ThingSpeak Website and create  a channel.
+2.Name it and activate Field1 for Temperature value and Field2 for Humidity value.
+3.Note the Channel ID.
+4.Create an MQTT device(Broker) to which our clients connect to  by Device->,MQTT.
+5.Copy the Client ID,Username and Password given by it and select the desired channel to which it publishes the data.
+6.In our project's app.c edit the preprocessor directives accordingly as given by the broker.
+7.Edit the sl_net_default_values to connect the dev kit to the local access point.
+8.Build the project and ensure it is successful.
+9.In ThingSpeak ,go to apps and create two React apps ,one to monitor the threshold condition for temperature field and the other for monitoring the threshold condition for the humiidity field of the same channel.
+10.These two react apps must trigger two Thinghttp apps which individually performs HTTP GET requests to the respective Google App Script deployements to send the email alerts. So, we must mention the deployement URLs in each of the Thinghttp app and mention the HTTP method as GET.
+
+
+
+
 ## Alert System
 
 Example condition used during development:
