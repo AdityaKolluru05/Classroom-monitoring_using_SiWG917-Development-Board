@@ -128,24 +128,32 @@ Exact topic/field mapping depends on your ThingSpeak channel configuration.
 ## Repository Structure
 
 ```
-project-root/
-├── app/
-│   └── app.c
-├── sensors/
-│   ├── temperature_sensor.c / .h
-│   ├── humidity_sensor.c / .h
-│   └── noise_sensor.c / .h
-├── mqtt/
-│   ├── mqtt_client.c / .h
-├── wifi/
-│   ├── wifi_app.c / .h
-├── docs/
-│   └── architecture.md
-├── config.h.example
-├── CMakeLists.txt
-├── .gitignore
-├── README.md
-└── LICENSE
+WifiEmbeddedMQTTClient/
+├── .vscode/                                  # VS Code workspace settings
+├── autogen/                                  # Auto-generated config/init files
+├── cmake_gcc/                                # CMake build files (GCC toolchain)
+├── cmake_iar/                                # CMake build files (IAR toolchain)
+├── cmake_llvm/                               # CMake build files (LLVM toolchain)
+├── config/                                   # Project configuration files
+├── resources/                                # Project resources
+├── simplicity_sdk_2026.6.1/                  # Silicon Labs Simplicity SDK
+├── wiseconnect3_sdk_4.1.1/                   # Silicon Labs WiSeConnect 3 SDK
+├── .projectlinkstore
+├── .silabsExtContext
+├── AGENTS.md
+├── app.c                                     # Main application logic (Wi-Fi + MQTT)
+├── app.h
+├── humidity_sensor.c                         # Humidity sensor driver/handling
+├── humidity_sensor.h
+├── main.c                                    # Application entry point
+├── readme.md
+├── SEGGER_RTT_Conf.h                         # SEGGER RTT debug configuration
+├── vscode.conf
+├── wifi_embedded_mqtt_client_soc.pintool     # Pin configuration (Pin Tool)
+├── wifi_embedded_mqtt_client_soc.slcp        # Silicon Labs project configuration
+├── wifi_embedded_mqtt_client_soc.slpb        # Silicon Labs project build file
+├── wifi_embedded_mqtt_client_soc.slps        # Silicon Labs project settings
+└── WifiEmbeddedMQTTClient.code-workspace     # VS Code workspace file
 ```
 
 ## Getting Started
