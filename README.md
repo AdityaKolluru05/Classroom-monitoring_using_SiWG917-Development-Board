@@ -84,7 +84,7 @@ MQTT is used for its lightweight publish/subscribe model, well suited to IoT and
 | **Visual Studio Code**  | Source-code editing and project management                  |
 | **C**                   | Application and embedded firmware development               |
 | **MQTT**                | Transfers sensor data to the cloud                          |
-| **ThingSpeak**          | Cloud storage, visualization, and monitoring of sensor data |
+| **ThingSpeak**          | Cloud storage,visualization,monitoring of sensor data,field parameter threshold defining and consequent alert condition triggering.|
 | **Git / GitHub**        | Version control and project repository management           |
 
 
@@ -201,9 +201,7 @@ Connect the SiWG917 dev kit via USB and verify the serial/debug interface is det
 | **Last Will Topic** | `gitam/revanth/monitor/status` |
 | **Last Will Message** | `{"device":"SIWG917","status":"OFFLINE"}` |
 | **Published Topic** | `channels/3429057/publish` |
-| **Published Message** | ` "field1=%ld&field2=%lu",
-                                  (long)temperature,
-                                  (unsigned long)humidity` |
+| **Published Message** | ` "field1=%ld&field2=%lu",(long)temperature,(unsigned long)humidity` |
 | **Publish QoS** | `0` |
 | **Last Will QoS** | `1` |
 | **Last Will Retained** | `1` |
